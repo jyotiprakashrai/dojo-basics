@@ -4,10 +4,18 @@
 <head>
     <meta charset="utf-8" />
     <title>Demo on</title>
+    
 </head>
 
 <body>
-    <div id="myDiv">Mouse over to change my background to yellow.</div>
+    <div id="myDiv">Mouse over to change my background to yellow.
+        
+    </div>
+    <div id="domStyle" class="test">DOM Style 
+        <style scoped>
+            @import "mystyle.css";
+        </style>
+    </div>
     <button id="mouseClickAlert">Identify mouse click</button>
     <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.14.1/dojo/dojo.js" data-dojo-config="async:true"></script>
     <script src="event-mouse.js"></script>

@@ -1,14 +1,18 @@
 
 // dojo/mouse Useful where you want to track mouse events and restrict some
 // or want to show something specific on right click of mouse
-require(["dojo/dom", "dojo/on", "dojo/mouse", "dojo/domReady!"], function (dom, on, mouse) {
+require(["dojo/dom", "dojo/on", "dojo/mouse", "dojo/dom-style", "dojo/domReady!"],
+   function (dom, on, mouse, domstyle) {
 
 
     var mouseClick = dom.byId("mouseClickAlert")
     var div = dom.byId("myDiv")
+    var domStyleDiv = dom.byId("domStyle")
 
     on(div, mouse.enter, function (event) {
-        div.innerHTML = "Move mouse pointer away to change color to while"
+        domstyle.set(div, "width", "2500px")
+        
+        div.innerHTML = "Move mouse pointer away to change color to while; width is: "+domstyle.get(div, "width")
         div.style.background = "yellow"
     })
 
@@ -25,6 +29,12 @@ require(["dojo/dom", "dojo/on", "dojo/mouse", "dojo/domReady!"], function (dom, 
             // handle mouse right click
             alert('MOUSE RIGHT CLICKED');
         }
+    })
+
+    on(domStyleDiv, "click", function(event){
+
+       var styles = domstyle.getComputedStyle(domStyleDiv)
+       div.innerHTML = "width is: "+styles.width +" height is: "+styles.height+" background color is "+styles.color
     })
 
 });
